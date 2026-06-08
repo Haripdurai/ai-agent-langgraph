@@ -1,0 +1,104 @@
+TC001 - Positive: Create Policy with Valid Details
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Enter Customer Name: John Smith
+2. Enter DOB: 15/01/1985
+3. Enter Contact: +44-7900-123456
+4. Enter Car Registration: AB21XYZ
+5. Select No Previous Claims
+6. Click Submit
+Expected Result: Policy created successfully with confirmation message
+
+---
+
+TC002 - Positive: Create Policy with Additional Driver
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all primary customer details
+2. Select Has Additional Driver
+3. Enter Additional Driver Name: Jane Smith
+4. Enter Additional Driver DOB: 20/03/1990
+5. Click Submit
+Expected Result: Policy created with additional driver information
+
+---
+
+TC003 - Negative: Cannot Create Policy with Past Date
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all required fields with valid data
+2. Enter Policy Start Date: 01/02/2026 (yesterday)
+3. Click Submit
+Expected Result: Error message displays Policy start date cannot be in the past
+
+---
+
+TC004 - Negative: Cannot Create Policy with Invalid Date
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all required fields with valid data
+2. Enter Policy Start Date: 01/01/2020 (more than 1 year ago)
+3. Click Submit
+Expected Result: Error message displays Invalid policy start date
+
+---
+
+TC005 - Negative: Missing Required Fields
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Leave Customer Name field empty
+2. Fill remaining mandatory fields
+3. Click Submit
+Expected Result: Error message displayed for required field
+
+---
+
+TC006 - Positive: Create Policy with Previous Claims
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill customer details with valid data
+2. Select Has Previous Claims
+3. Enter claim details
+4. Click Submit
+Expected Result: Policy created with previous claims information
+
+---
+
+TC007 - Negative: Policy with Traffic Conviction
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill customer details with valid data
+2. Select Has Traffic Convictions
+3. Click Submit
+Expected Result: Policy price adjusted based on traffic convictions
+
+---
+
+TC008 - Edge Case: Policy Start Date Today
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all customer details
+2. Enter Policy Start Date: 06/02/2026 (today)
+3. Click Submit
+Expected Result: Policy created successfully with today as start date
+
+---
+
+TC009 - Positive: Update Policy with Vehicle Details
+Preconditions: Policy creation page with vehicle details section
+Steps:
+1. Enter vehicle registration number
+2. Verify vehicle details are auto-populated
+3. Update any required vehicle information
+4. Click Next
+Expected Result: Vehicle details updated and form proceeds to next section
+
+---
+
+TC010 - Negative: Invalid Vehicle Registration
+Preconditions: User is on the vehicle details page
+Steps:
+1. Enter invalid vehicle registration: INVALID123
+2. Try to lookup or proceed
+3. Click Next
+Expected Result: Error message displays Invalid vehicle registration format

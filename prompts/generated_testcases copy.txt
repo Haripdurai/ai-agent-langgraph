@@ -1,0 +1,106 @@
+TC001 - Positive: Create Policy with Valid Details (No Previous Claims)
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Enter Customer Name: John Smith
+2. Enter DOB: 15/01/1985
+3. Enter Contact: +44-7900-123456
+4. Enter Car Registration: AB21XYZ
+5. Enter House Number: 42
+6. Enter Policy Start Date: 05/02/2026
+7. Select "No Previous Claims"
+8. Select "No Convictions"
+9. Click Submit
+Expected Result: Policy created successfully with confirmation message
+Priority: High
+---
+TC002 - Positive: Create Policy with Additional Driver
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all primary customer details (Name, DOB, Contact, Car, House)
+2. Enter Policy Start Date: 10/02/2026
+3. Select "Has Additional Driver"
+4. Enter Additional Driver Name: Jane Smith
+5. Enter Additional Driver DOB: 20/03/1990
+6. Click Submit
+Expected Result: Policy created with additional driver information
+Priority: High
+---
+TC003 - Negative: Cannot Create Policy with Past Date
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all required fields with valid data
+2. Enter Policy Start Date: 01/02/2026 (yesterday's date)
+3. Click Submit
+Expected Result: Error message displays: "Policy start date cannot be in the past. Please select today or a future date."
+Priority: High
+---
+TC004 - Negative: Cannot Create Policy with Ancient Past Date
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all required fields with valid data
+2. Enter Policy Start Date: 01/01/2020 (more than 1 year ago)
+3. Click Submit
+Expected Result: Error message displays: "Invalid policy start date. Please select a valid future date."
+Priority: High
+---
+TC005 - Negative: Missing Required Fields
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Leave Customer Name field empty
+2. Fill remaining mandatory fields
+3. Click Submit
+Expected Result: Form validation error: "Customer Name is required"
+Priority: High
+---
+TC006 - Positive: Create Policy with Previous Claims
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all required fields (Name: Mary Johnson, DOB: 12/06/1992, Contact: +44-7700-654321, Car: CD22ABC)
+2. Enter House Number: 55
+3. Enter Policy Start Date: 15/02/2026
+4. Select "Has Previous Claims"
+5. Enter Number of Claims: 1
+6. Enter Claim Date: 2023
+7. Click Submit
+Expected Result: Policy created successfully; premium calculated with previous claims surcharge
+Priority: Medium
+---
+TC007 - Negative: Policy with Traffic Conviction
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all customer details
+2. Enter Policy Start Date: 08/02/2026
+3. Select "Has Convictions"
+4. Enter Conviction Details: Speeding (2022)
+5. Click Submit
+Expected Result: Policy created with conviction flag; premium adjusted accordingly
+Priority: Medium
+---
+TC008 - Edge Case: Policy Start Date Today
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all required fields
+2. Enter Policy Start Date: 02/02/2026 (today)
+3. Click Submit
+Expected Result: Policy created successfully - today is valid start date
+Priority: Medium
+---
+TC009 - Edge Case: Vehicle Age Validation (19 years old)
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all customer details
+2. Enter Car Registration: OLD2007XYZ (19 years old vehicle)
+3. Enter Policy Start Date: 05/02/2026
+4. Click Submit
+Expected Result: Policy created successfully; premium adjusted for older vehicle
+Priority: Medium
+---
+TC010 - Negative: Vehicle Too Old (21 years)
+Preconditions: User is on the motor insurance policy creation page
+Steps:
+1. Fill all customer details
+2. Enter Car Registration: ANCIENT2005AB (21 years old vehicle)
+3. Enter Policy Start Date: 05/02/2026
+4. Click Submit
+Expected Result: Error message: "Vehicle is too old. Maximum vehicle age allowed is 20 years."
+Priority: Medium
